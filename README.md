@@ -62,3 +62,34 @@ flowchart TD
     p2 --> p4
     p3 --> p4 --> r1 --> r2
 ```
+---
+
+## 🎬 데모 & 디자인 산출물
+
+- 서비스 플로우차트  
+- 유즈케이스 다이어그램  
+- Figma UI 시안  
+
+👉 [실제 Figma 시안 보러가기](https://www.figma.com/design/J18MP1ViHTA5qKEUTFFIEt/Untitled?node-id=0-1&p=f&t=TBIj4cpfDHfGXVAY-0
+)  
+
+### 📊 서비스 플로우차트
+![서비스 플로우차트](reports/service_flow.png)
+
+### 🧩 유즈케이스 다이어그램
+![유즈케이스 다이어그램](reports/usecase.png)
+
+### 🎨 Figma UI 시안
+![Figma UI 시안](reports/figma_ui.png)
+
+---
+
+## 👤 담당 역할 (UI/UX Designer & Data Contributor)
+
+- **UI/UX 설계**: 사용자 여정 Flowchart, Use Case Diagram, Figma UI 시안 제작  
+- **데이터 파트 보조**: 리뷰 크롤링 및 전처리 파이프라인 일부 기여  
+- **발표자료 & 보고서**: 사용자 경험 관점 시각화 및 자료 정리  
+
+---
+
+## 📂 프로젝트 구조
