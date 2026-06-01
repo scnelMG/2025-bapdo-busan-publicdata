@@ -205,3 +205,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Project-local sensitive and heavy artifacts
+chromedriver-win64/
+*.chromedriver
+data/images/
+data/photos/
+data/사진/
+data/사진_정제/
+*.hwp
+*.mp4

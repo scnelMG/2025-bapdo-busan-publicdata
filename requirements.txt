@@ -1,0 +1,17 @@
+pandas
+polars
+numpy
+scikit-learn
+selenium
+beautifulsoup4
+requests
+langchain
+langchain-google-genai
+google-generativeai
+pydantic
+torch
+torchvision
+transformers
+Pillow
+faiss-cpu
+jupyter
