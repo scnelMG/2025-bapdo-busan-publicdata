@@ -209,6 +209,8 @@ __marimo__/
 # Project-local sensitive and heavy artifacts
 chromedriver-win64/
 *.chromedriver
+data/raw/
+data/reviews/
 data/images/
 data/photos/
 data/사진/
