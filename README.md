@@ -82,6 +82,14 @@ Gemini API를 사용하는 notebook은 환경 변수가 필요합니다. API key
 
 공개 checkout에서는 notebook 흐름과 reports 산출물을 검토할 수 있습니다. raw review, raw image, 대용량 crawling result는 공개하지 않습니다.
 
+## 빠른 검증
+
+공개 포트폴리오 제출 전에는 아래 명령으로 필수 문서와 대용량 tracked 파일 여부를 확인합니다.
+
+```bash
+python scripts/verify_portfolio.py
+```
+
 ## 공개/비공개 경계
 
 포함:
