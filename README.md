@@ -1,132 +1,67 @@
-# 밥;도 (Bap;do)
+# 밥;도 - 부산 돼지국밥 맛집 추천
 
-> 부산 공공데이터와 리뷰/이미지 분석을 결합한 돼지국밥 맛집 추천 프로젝트<br>
-> 2025 부산광역시 공공빅데이터 활용 창업경진대회
+> 부산 공공데이터, 리뷰 텍스트, 음식 이미지 유사도를 결합해 유명 맛집과 비슷한 숨은 돼지국밥집을 추천하는 데이터 서비스 프로젝트입니다.
 
-## Overview
+[![Python](https://img.shields.io/badge/Python-Data%20Pipeline-3776AB?logo=python&logoColor=white)](requirements.txt)
+[![LangChain](https://img.shields.io/badge/LangChain-Review%20Labeling-1C3C3C)](notebooks)
+[![CLIP](https://img.shields.io/badge/CLIP-Image%20Similarity-4B8BBE)](notebooks)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Public%20Data-2ea44f)](data/README.md)
 
-밥;도는 부산의 대표 음식인 **돼지국밥**을 중심으로, 공공데이터와 네이버 리뷰/음식 이미지를 분석해 유명 맛집과 유사한 숨은 맛집을 추천하는 서비스 기획 및 데이터 분석 프로젝트입니다.
+## 개요
 
-핵심 아이디어는 단순 평점 기반 추천이 아니라, 리뷰에서 드러나는 음식점의 특징과 음식 사진의 시각적 유사도를 함께 반영하는 것입니다.
+밥;도는 부산의 대표 음식인 돼지국밥을 중심으로, 공공데이터와 네이버 리뷰/음식 이미지를 분석해 유명 맛집과 유사한 숨은 맛집을 추천하는 서비스 기획 및 데이터 분석 프로젝트입니다.
 
-## Portfolio Review Notes
+단순 평점 기반 추천이 아니라, 리뷰에서 드러나는 음식점 특징과 음식 사진의 시각적 유사도를 함께 사용해 “내가 좋아한 국밥집과 비슷한 가게”를 찾는 흐름을 설계했습니다.
 
-### Problem
+## 빠른 검토 경로
 
-부산을 방문하거나 지역 맛집을 찾는 사용자는 유명 맛집에 집중된 정보만 접하기 쉽습니다. 이 프로젝트는 부산 공공데이터로 돼지국밥 후보군을 만들고, 리뷰 텍스트와 음식 이미지 유사도를 함께 사용해 "유명 맛집과 비슷한 숨은 가게"를 찾는 추천 흐름을 설계했습니다.
-
-### Role and Ownership
-
-이 저장소는 팀 프로젝트 산출물입니다. 로컬 git 이력에는 `Eunjae Lee`, `scnelMG`, `Park Mingyu`의 커밋이 함께 남아 있으므로 단독 제작물로 소개하지 않습니다. 아래 `My Contribution` 섹션은 이 포트폴리오에서 설명 가능한 기여 범위만 적은 것이며, 서비스 기획과 산출물은 팀 결과물로 보아야 합니다.
-
-### Public Data and Safety
-
-현재 저장소에는 작은 CSV와 데모 이미지가 포함되어 있지만, 공개 전에는 데이터 재배포 범위를 다시 확인해야 합니다. 특히 `data/raw/`의 공공데이터 출처별 이용 조건과 `data/reviews/`의 크롤링 리뷰 CSV 재배포 가능성은 별도 검토가 필요합니다. 대용량 크롤링 이미지, API 키, 제출 서류, 개인정보가 들어갈 수 있는 문서는 저장소에 포함하지 않습니다.
-
-### Reproduce / Inspect
-
-완전 재현보다는 공개 가능한 산출물 검토에 초점을 둡니다. 리뷰 수집, 라벨링, 이미지 유사도 분석 흐름은 `notebooks/`에서 단계별로 확인할 수 있고, 데모 화면은 `reports/`에서 확인할 수 있습니다. Gemini API를 사용하는 노트북은 `GOOGLE_API_KEY` 환경변수가 필요하며 키 값을 코드나 노트북에 직접 저장하지 않습니다.
-
-### Limitations and Public Status
-
-추천 결과는 크롤링 시점, 공개 데이터 품질, 리뷰 수집 범위, 이미지 수집 가능 여부에 영향을 받습니다. 또한 데이터 재배포와 공동 저작권 검토가 끝나기 전까지는 이 저장소를 그대로 push-ready로 보지 않고, 포트폴리오 후보로만 다룹니다.
-
-## Key Features
-
-- 부산 공공데이터 기반 음식점 후보군 구축
-- 네이버 블로그/스마트스토어 리뷰 크롤링 및 수집 현황 관리
-- Gemini API와 LangChain 기반 돼지국밥 특징 라벨링
-- CLIP 임베딩 기반 국밥 이미지 유사도 계산
-- 텍스트 특징과 이미지 특징을 결합한 유사 맛집 추천 파이프라인
-- 서비스 화면, 대시보드, Figma 시안으로 사용자 경험 구체화
-
-## Tech Stack
-
-| Area | Tools |
+| 먼저 볼 것 | 확인할 내용 |
 | --- | --- |
-| Data Collection | Python, Selenium, BeautifulSoup |
-| Data Processing | Pandas, Polars |
-| NLP / Labeling | LangChain, Gemini API |
-| Vision | CLIP, image embeddings |
-| Recommendation | Cosine Similarity, FAISS |
-| Design | Figma, dashboard mockups |
+| [data/README.md](data/README.md) | 공개 데이터와 제외 데이터의 범위 |
+| [notebooks/README.md](notebooks/README.md) | 수집, 라벨링, 이미지 유사도 분석 흐름 |
+| [reports/](reports/) | 서비스 화면, 대시보드, 결과 이미지 |
+| [requirements.txt](requirements.txt) | 실행 환경 |
 
-## Repository Structure
+## 문제 정의
 
-```text
-.
-├── data/
-│   ├── raw/          # 부산 공공데이터 원본 CSV
-│   ├── processed/    # 전처리, 라벨링, 수집 현황 결과 CSV
-│   └── reviews/      # 크롤링한 블로그 리뷰 CSV
-├── notebooks/        # 수집, 전처리, 라벨링, 이미지 유사도 분석 노트북
-├── reports/          # 서비스 화면 및 분석 결과 이미지
-├── LICENSE
-└── README.md
-```
+부산을 방문하거나 지역 맛집을 찾는 사용자는 이미 유명한 가게 위주의 정보에 노출되기 쉽습니다. 이 프로젝트는 공공데이터로 후보 음식점을 만들고, 리뷰 텍스트와 이미지 유사도를 결합해 유명 맛집과 비슷한 숨은 가게를 찾는 추천 흐름을 제안했습니다.
 
-## Data
+## 내 역할
 
-이 repo에는 GitHub에서 확인하기 적절한 크기의 CSV 데이터만 포함했습니다.
+팀 프로젝트 산출물이며, 이 저장소는 단독 제작물로 소개하지 않습니다. 공개 가능한 기여 범위는 다음과 같습니다.
 
-- `data/raw`: 부산 음식점, 관광, 축제, 전시 등 공공데이터 원본
-- `data/processed`: 돼지국밥 후보군, 유명 가게 목록, 라벨링 결과, 수집 현황
-- `data/reviews`: 유명 가게 및 전체 후보 가게의 블로그 리뷰 크롤링 결과
+- 부산 공공데이터 기반 돼지국밥 음식점 후보군 수집/전처리
+- 네이버 리뷰와 이미지 크롤링 pipeline 구성
+- Gemini API와 LangChain 기반 리뷰 특징 라벨링
+- CLIP embedding 기반 국밥 이미지 유사도 분석
+- 추천 서비스 UX 흐름과 화면 산출물 정리
+- raw/crawled data와 대용량 이미지 자료의 공개 제외 처리
 
-크롤링 이미지 원본과 정제 이미지는 약 761MB 규모라 GitHub 일반 repo에는 포함하지 않았습니다. 대신 이미지 수집/정제/유사도 분석 과정은 `notebooks/`에 보존했습니다.
+## 기술적 의사결정
 
-자세한 파일 목록은 [data/README.md](data/README.md)를 참고하세요.
-
-## Notebook Workflow
-
-| Step | Notebook | Description |
+| 영역 | 선택 | 이유 |
 | --- | --- | --- |
-| 1 | `bapdo-pork-soup-list.ipynb` | 공공데이터 기반 돼지국밥 음식점 후보군 생성 |
-| 2 | `bapdo-review-crawling.ipynb` | 네이버 블로그 리뷰 수집 |
-| 3 | `bapdo-review-langchain.ipynb` | 리뷰 기반 음식점 특징 라벨링 |
-| 4 | `bapdo-review-summarizer.ipynb` | 리뷰 요약 및 라벨링 실험 |
-| 5 | `bapdo-image-crawling.ipynb` | 음식점 이미지 수집 |
-| 6 | `bapdo-image-similarity.ipynb` | CLIP 기반 이미지 유사도 분석 |
-| 7 | `bapdo-naver-smartstore.ipynb` | 네이버 스마트스토어 리뷰 수집 실험 |
+| 후보군 구성 | 부산 공공데이터 | 지역성과 공신력 있는 초기 음식점 pool을 만들기 위함입니다. |
+| 리뷰 분석 | Gemini API, LangChain | 리뷰에서 맛, 양, 분위기, 웨이팅 등 특징을 구조화하기 위함입니다. |
+| 이미지 분석 | CLIP embedding | 음식 사진의 시각적 유사도를 텍스트 feature와 함께 활용하기 위함입니다. |
+| 추천 | Cosine similarity, FAISS | 유명 맛집과 유사한 후보를 빠르게 찾기 위한 구성입니다. |
+| 공개 정책 | small sample / docs 중심 | 리뷰와 이미지 크롤링 데이터의 재배포 리스크를 줄이기 위함입니다. |
 
-## Setup
-
-```powershell
-pip install -r requirements.txt
-```
-
-Gemini API를 사용하는 노트북은 실행 전에 환경변수를 설정해야 합니다.
-
-```powershell
-$env:GOOGLE_API_KEY="your-api-key"
-```
-
-## Recommendation Pipeline
+## 추천 파이프라인
 
 ```mermaid
 flowchart TD
-    raw["Public restaurant data"] --> candidates["Pork soup candidate list"]
-    reviews["Crawled reviews"] --> labels["LLM feature labeling"]
-    images["Crawled food images"] --> embeddings["CLIP image embeddings"]
-    candidates --> merged["Restaurant feature table"]
+    raw["부산 공공데이터"] --> candidates["돼지국밥 후보군"]
+    reviews["크롤링 리뷰"] --> labels["LLM 특징 라벨링"]
+    images["음식 이미지"] --> embeddings["CLIP embedding"]
+    candidates --> merged["음식점 feature table"]
     labels --> merged
-    embeddings --> similarity["Similarity scoring"]
+    embeddings --> similarity["유사도 계산"]
     merged --> similarity
-    similarity --> topn["Top-N similar restaurant recommendations"]
+    similarity --> topn["유사 맛집 추천"]
 ```
 
-## Service Flow
-
-```mermaid
-flowchart LR
-    user["User"] --> query["Search or select favorite restaurant"]
-    query --> analysis["Review and image feature analysis"]
-    analysis --> recommend["Similarity-based recommendation"]
-    recommend --> result["Hidden local restaurant list"]
-    result --> user
-```
-
-## Demo Screens
+## 데모 화면
 
 <p align="center">
   <img src="reports/similar_gukbap_search.png" width="30%"/>
@@ -136,14 +71,33 @@ flowchart LR
 
 [Figma 시안 보기](https://www.figma.com/design/J18MP1ViHTA5qKEUTFFIEt/Untitled?node-id=0-1&p=f&t=TBIj4cpfDHfGXVAY-0)
 
-## My Contribution
+## 재현 가능성
 
-- 부산 공공데이터 기반 음식점 후보군 수집 및 전처리
-- 네이버 리뷰/이미지 크롤링 파이프라인 구성
-- Gemini API와 LangChain을 활용한 돼지국밥 특징 라벨링
-- CLIP 기반 국밥 이미지 유사도 분석
-- 추천 서비스 UX 흐름, 화면 설계, 데이터 산출물 정리
+```powershell
+pip install -r requirements.txt
+$env:GOOGLE_API_KEY="your-api-key"
+```
 
-## Team
+Gemini API를 사용하는 notebook은 환경 변수가 필요합니다. API key는 코드나 notebook에 직접 저장하지 않습니다.
 
-김태연, 박민규, 이은재, 홍예원
+공개 checkout에서는 notebook 흐름과 reports 산출물을 검토할 수 있습니다. raw review, raw image, 대용량 crawling result는 공개하지 않습니다.
+
+## 공개/비공개 경계
+
+포함:
+
+- 공공데이터 기반 후보군과 일부 작은 processed data
+- notebook workflow
+- 서비스 화면과 dashboard 이미지
+
+제외:
+
+- 대용량 크롤링 이미지와 정제 이미지
+- 재배포 권한이 불명확한 raw review CSV
+- API key, 제출 서류, 개인정보 가능 문서
+
+## 한계
+
+- 추천 결과는 크롤링 시점과 리뷰 수집 범위에 영향을 받습니다.
+- 리뷰/이미지 데이터의 재배포 권한을 항상 별도로 확인해야 합니다.
+- 서비스 구현은 PoC/기획 단계이며 production app은 포함되어 있지 않습니다.
