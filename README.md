@@ -19,15 +19,6 @@
 
 단순 평점 기반 추천이 아니라, 리뷰에서 드러나는 음식점 특징과 음식 사진의 시각적 유사도를 함께 사용해 “내가 좋아한 국밥집과 비슷한 가게”를 찾는 흐름을 설계했습니다.
 
-## 빠른 검토 경로
-
-| 먼저 볼 것 | 확인할 내용 |
-| --- | --- |
-| [data/README.md](data/README.md) | 공개 데이터와 제외 데이터의 범위 |
-| [notebooks/README.md](notebooks/README.md) | 수집, 라벨링, 이미지 유사도 분석 흐름 |
-| [reports/](reports/) | 서비스 화면, 대시보드, 결과 이미지 |
-| [requirements.txt](requirements.txt) | 실행 환경 |
-
 ## 문제 정의
 
 부산을 방문하거나 지역 맛집을 찾는 사용자는 이미 유명한 가게 위주의 정보에 노출되기 쉽습니다. 이 프로젝트는 공공데이터로 후보 음식점을 만들고, 리뷰 텍스트와 이미지 유사도를 결합해 유명 맛집과 비슷한 숨은 가게를 찾는 추천 흐름을 제안했습니다.
@@ -70,9 +61,8 @@ flowchart TD
 ## 데모 화면
 
 <p align="center">
-  <img src="reports/similar_gukbap_search.png" width="30%"/>
-  <img src="reports/my_gukbap_search.png" width="30%"/>
-  <img src="reports/dashboard.png" width="30%"/>
+  <img src="reports/similar_gukbap_search.png" alt="유사한 돼지국밥집을 찾는 실제 화면" width="30%" />
+  <img src="reports/my_gukbap_search.png" alt="사용자 취향으로 돼지국밥집을 찾는 실제 화면" width="30%" />
 </p>
 
 [Figma 시안 보기](https://www.figma.com/design/J18MP1ViHTA5qKEUTFFIEt/Untitled?node-id=0-1&p=f&t=TBIj4cpfDHfGXVAY-0)
@@ -88,27 +78,11 @@ Gemini API를 사용하는 notebook은 환경 변수가 필요합니다. API key
 
 공개 checkout에서는 notebook 흐름과 reports 산출물을 검토할 수 있습니다. raw review, raw image, 대용량 crawling result는 공개하지 않습니다.
 
-## 빠른 검증
-
-공개 포트폴리오 제출 전에는 아래 명령으로 필수 문서와 대용량 tracked 파일 여부를 확인합니다.
-
-```bash
-python scripts/verify_portfolio.py
-```
-
 ## 공개/비공개 경계
 
-포함:
-
-- 공공데이터 기반 후보군과 일부 작은 processed data
-- notebook workflow
-- 서비스 화면과 dashboard 이미지
-
-제외:
-
-- 대용량 크롤링 이미지와 정제 이미지
-- 재배포 권한이 불명확한 raw review CSV
-- API key, 제출 서류, 개인정보 가능 문서
+- 공개: 공공데이터 기반 후보군, notebook workflow, 실제 서비스 화면
+- 제외: 대용량 크롤링 이미지, 재배포 권한이 불명확한 raw review, 비밀값·제출 문서
+- 검증: `python scripts/verify_portfolio.py`로 필수 문서와 대용량 tracked 파일을 확인합니다.
 
 ## 한계
 
