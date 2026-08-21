@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="reports/dashboard.png" alt="밥;도 실제 추천 대시보드" width="720" />
-</p>
-
 # 밥;도 - 부산 돼지국밥 맛집 추천
 
 <p align="center">부산 공공데이터 활용 프로젝트 · 리뷰 텍스트 · 이미지 유사도 · 맛집 추천</p>
@@ -58,12 +54,14 @@ flowchart TD
     similarity --> topn["유사 맛집 추천"]
 ```
 
-## 데모 화면
+## Figma 화면 시안
 
 <p align="center">
-  <img src="reports/similar_gukbap_search.png" alt="유사한 돼지국밥집을 찾는 실제 화면" width="30%" />
-  <img src="reports/my_gukbap_search.png" alt="사용자 취향으로 돼지국밥집을 찾는 실제 화면" width="30%" />
+  <img src="reports/similar_gukbap_search.png" alt="유사 국밥집 탐색 Figma 시안" width="40%" />
+  <img src="reports/my_gukbap_search.png" alt="취향 기반 국밥 탐색 Figma 시안" width="40%" />
 </p>
+
+화면은 추천 흐름을 검토하기 위해 만든 Figma 시안입니다. 저장소에는 데이터 분석과 추천 PoC를 담았으며, 별도 production 앱은 포함하지 않습니다.
 
 [Figma 시안 보기](https://www.figma.com/design/J18MP1ViHTA5qKEUTFFIEt/Untitled?node-id=0-1&p=f&t=TBIj4cpfDHfGXVAY-0)
 
@@ -80,7 +78,7 @@ Gemini API를 사용하는 notebook은 환경 변수가 필요합니다. API key
 
 ## 공개/비공개 경계
 
-- 공개: 공공데이터 기반 후보군, notebook workflow, 실제 서비스 화면
+- 공개: 공공데이터 기반 후보군, notebook workflow, Figma 화면 시안
 - 제외: 대용량 크롤링 이미지, 재배포 권한이 불명확한 raw review, 비밀값·제출 문서
 - 검증: `python scripts/verify_portfolio.py`로 필수 문서와 대용량 tracked 파일을 확인합니다.
 
